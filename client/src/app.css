@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+ 
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+ 
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+ 
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+ 
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+ 
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --ring: 0 0% 3.9%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+ 
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+ 
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+ 
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+ 
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+ 
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --ring: 0 0% 83.1%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* @font-face {
+  font-family: "Inter";
+  src: url(http://localhost:5173/src/lib/assets/font/Inter.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+} */
+
+*{
+	margin: 0;
+	padding: 0;
+  font-family: Inter, sans-serif;
+}
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-attachment: fixed;
+	background-color: var(--color-bg-1);
+	background-size: 100vw 100vh;
+	background-image: radial-gradient(
+			50% 50% at 50% 50%,
+			rgba(255, 255, 255, 0.75) 0%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		linear-gradient(180deg, var(--color-bg-0) 0%, var(--color-bg-1) 15%, var(--color-bg-2) 50%);
+		overflow: hidden;
+}
+.btn {
+  background-color: #35a7c4;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2c8a97;
+  transform: scale(1.05);
+}
+::-webkit-scrollbar {
+	width: 5px; /* Width of the entire scrollbar */
+  }
+  
+  /* Change the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+	background: #35a7c4;
+    border-radius: 4px 
+	/* Border around the thumb */
+  }
+  
+  /* Change the scrollbar track (background) */
+  ::-webkit-scrollbar-track {
+	background: rgba(0,0,0,0);
+    border-radius: 4px /* Color of the track */
+  }
+
+  select, textarea, input[type="radio"], input[type="checkbox"] {
+    background-color: #2c8a97;
+    color: white;
+    border: 1px solid #35a7c4;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 5px 0;
+    font-size: 16px;
+    width: 100%;
+}
+.center-heading {
+  text-align: center;
+  color: #35a7c4;
+  font-size: 24px;
+  
+}
+.custom-ctrl-minimap {
+  cursor: default !important;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  transition: all 0.6s ease-in, border-color 0s ease-in;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 4px;
+  border-color: white;
+  width: 200px;
+  height: 200px;
+  margin-right: 60px !important;
+}
+
+.geogrid-overrides .geogrid__label--left{
+margin-left: 30px !important;
+}

@@ -1,0 +1,609 @@
+{
+  "version": 8,
+  "name": "KS Topo after",
+  "projection": {
+    "type": "globe"
+  },
+  "metadata": {
+    "kstopo:license": "",
+    "kstopo:renderer": "",
+    "kstopo:version": "1.0"
+  },
+  "sources": {
+    "terrainSource": {
+      "type": "raster-dem",
+      "tiles": ["https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"],
+      "encoding": "terrarium",
+      "minzoom": 0,
+      "maxzoom": 22
+    },
+    "gsat": {
+      "type": "raster",
+      "tiles": ["https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"],
+      "tileSize": 256,
+      "attribution": "<a target='_blank' href='https://www.knowledgespatial.com'>&copy;KnowledgeSpatial</a>  &copy; Google map",
+      "maxzoom": 24
+    },
+    "ks": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost:3000/worldboundaries/{z}/{x}/{y}.pbf"
+      ],
+      "minZoom": 0,
+      "maxZoom": 15
+    },
+    "aaifeats": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost:6101/aaifeats/{z}/{x}/{y}"
+      ],
+      "minZoom": 0,
+      "maxZoom": 22
+    },
+    "gps_ts": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost:6101/gps_ts/{z}/{x}/{y}"
+      ],
+      "minZoom": 0,
+      "maxZoom": 22
+    },
+    "india_bndry": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost:6101/india_bndry/{z}/{x}/{y}"
+      ],
+      "minZoom": 0,
+      "maxZoom": 22
+    }
+  },
+  "terrain": {
+    "source": "terrainSource",
+    "exaggeration": 2.0
+  },
+  "sprite": "http://localhost:6101/rsc/sprites/aai_style",
+  "glyphs": "http://localhost:9000/rsc/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#FFFAF0"
+      }
+    },
+    {
+      "id": "SatelliteImagery",
+      "type": "raster",
+      "source": "gsat",
+      "minzoom": 0,
+      "maxzoom": 22,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "raster-opacity": 1
+      }
+    },
+    {
+      "id": "countries-fill",
+      "type": "fill",
+      "paint": {
+          "fill-color": [
+              "match",
+              [
+                  "get",
+                  "GID_0"
+              ],
+              [
+                  "ARM",
+                  "ATG",
+                  "AUS",
+                  "BTN",
+                  "CAN",
+                  "COG",
+                  "CZE",
+                  "GHA",
+                  "GIN",
+                  "HTI",
+                  "ISL",
+                  "JOR",
+                  "KHM",
+                  "KOR",
+                  "LVA",
+                  "MLT",
+                  "MNE",
+                  "MOZ",
+                  "PER",
+                  "SAH",
+                  "SGP",
+                  "SLV",
+                  "SOM",
+                  "TJK",
+                  "TUV",
+                  "UKR",
+                  "WSM"
+              ],
+              "#D6C7FF",
+              [
+                  "AZE",
+                  "BGD",
+                  "CHL",
+                  "CMR",
+                  "CSI",
+                  "DEU",
+                  "DJI",
+                  "GUY",
+                  "HUN",
+                  "IOA",
+                  "JAM",
+                  "LBN",
+                  "LBY",
+                  "LSO",
+                  "MDG",
+                  "MKD",
+                  "MNG",
+                  "MRT",
+                  "NIU",
+                  "NZL",
+                  "PCN",
+                  "PYF",
+                  "SAU",
+                  "SHN",
+                  "STP",
+                  "TTO",
+                  "UGA",
+                  "UZB",
+                  "ZMB"
+              ],
+              "#EBCA8A",
+              [
+                  "AGO",
+                  "ASM",
+                  "ATF",
+                  "BDI",
+                  "BFA",
+                  "BGR",
+                  "BLZ",
+                  "BRA",
+                  "CHN",
+                  "CRI",
+                  "ESP",
+                  "HKG",
+                  "HRV",
+                  "IDN",
+                  "IRN",
+                  "ISR",
+                  "KNA",
+                  "LBR",
+                  "LCA",
+                  "MAC",
+                  "MUS",
+                  "NOR",
+                  "PLW",
+                  "POL",
+                  "PRI",
+                  "SDN",
+                  "TUN",
+                  "UMI",
+                  "USA",
+                  "USG",
+                  "VIR",
+                  "VUT"
+              ],
+              "#C1E599",
+              [
+                  "ARE",
+                  "ARG",
+                  "BHS",
+                  "CIV",
+                  "CLP",
+                  "DMA",
+                  "ETH",
+                  "GAB",
+                  "GRD",
+                  "HMD",
+                  "IND",
+                  "IOT",
+                  "IRL",
+                  "IRQ",
+                  "ITA",
+                  "KOS",
+                  "LUX",
+                  "MEX",
+                  "NAM",
+                  "NER",
+                  "PHL",
+                  "PRT",
+                  "RUS",
+                  "SEN",
+                  "SUR",
+                  "TZA",
+                  "VAT"
+              ],
+              "#E7E58F",
+              [
+                  "AUT",
+                  "BEL",
+                  "BHR",
+                  "BMU",
+                  "BRB",
+                  "CYN",
+                  "DZA",
+                  "EST",
+                  "FLK",
+                  "GMB",
+                  "GUM",
+                  "HND",
+                  "JEY",
+                  "KGZ",
+                  "LIE",
+                  "MAF",
+                  "MDA",
+                  "NGA",
+                  "NRU",
+                  "SLB",
+                  "SOL",
+                  "SRB",
+                  "SWZ",
+                  "THA",
+                  "TUR",
+                  "VEN",
+                  "VGB"
+              ],
+              "#98DDA1",
+              [
+                  "AIA",
+                  "BIH",
+                  "BLM",
+                  "BRN",
+                  "CAF",
+                  "CHE",
+                  "COM",
+                  "CPV",
+                  "CUB",
+                  "ECU",
+                  "ESB",
+                  "FSM",
+                  "GAZ",
+                  "GBR",
+                  "GEO",
+                  "KEN",
+                  "LTU",
+                  "MAR",
+                  "MCO",
+                  "MDV",
+                  "NFK",
+                  "NPL",
+                  "PNG",
+                  "PRY",
+                  "QAT",
+                  "SLE",
+                  "SPM",
+                  "SYC",
+                  "TCA",
+                  "TKM",
+                  "TLS",
+                  "VNM",
+                  "WEB",
+                  "WSB",
+                  "YEM",
+                  "ZWE"
+              ],
+              "#83D5F4",
+              [
+                  "ABW",
+                  "ALB",
+                  "AND",
+                  "ATC",
+                  "BOL",
+                  "COD",
+                  "CUW",
+                  "CYM",
+                  "CYP",
+                  "EGY",
+                  "FJI",
+                  "GGY",
+                  "IMN",
+                  "KAB",
+                  "KAZ",
+                  "KWT",
+                  "LAO",
+                  "MLI",
+                  "MNP",
+                  "MSR",
+                  "MYS",
+                  "NIC",
+                  "NLD",
+                  "PAK",
+                  "PAN",
+                  "PRK",
+                  "ROU",
+                  "SGS",
+                  "SVN",
+                  "SWE",
+                  "TGO",
+                  "TWN",
+                  "VCT",
+                  "ZAF"
+              ],
+              "#B1BBF9",
+              [
+                  "ATA",
+                  "GRL"
+              ],
+              "#FFFFFF",
+              "#EAB38F"
+          ]
+      },
+      "layout": {
+          "visibility": "none"
+      },
+      "source": "ks",
+      "maxzoom": 15,
+      "source-layer": "ADM_0_Mercat_KS"
+  },
+  {
+    "id": "OHS",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "OHS"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "IHS",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "IHS"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "CS",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "CS"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "Runaway",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "runway"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "Runaway Buffer",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "runway_buffer"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "transitional_x",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "transitional_x"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "transitional_y",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "transitional_y"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "20km",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "name", "20 KM"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "first_sec_polygon",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "type", "first_sec_polygon"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "secnd_sec_polygon",
+    "type": "line",
+    "source": "aaifeats",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "type", "secnd_sec_polygon"]
+    ],
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "rgba(0, 0, 0, 1)"
+    }
+  },
+  {
+    "id": "HUT_P",
+    "type": "symbol",
+    "source": "gps_ts",
+    "source-layer": "default",
+    "minzoom":0,
+    "maxzoom": 18,
+    "layout": {
+      "icon-image": "HUT_P",
+      "visibility": "visible" 
+    
+    }
+  },
+  {
+    "id": "ARP",
+    "type": "symbol",
+    "source": "gps_ts",
+    "source-layer": "default",
+    "minzoom":0,
+    "maxzoom": 18,
+    "filter": [
+      "any",
+      ["==", "feature_code", "ARP"]
+    ],
+    "layout": {
+      "icon-image": "CMEMRL",
+      "visibility": "visible" 
+    
+    }
+  },
+  {
+    "id": "India Boundary",
+    "type": "line",
+    "source": "india_bndry",
+    "source-layer": "default",
+    "minzoom": 0,
+    "maxzoom": 18,
+    "layout": {
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "#707070"
+    }
+  },
+  {
+    "id": "Label",
+    "type": "symbol",
+    "source": "aaifeats",
+    "source-layer": "default",
+ 
+    "layout": {
+      "text-field": [
+            "concat",
+
+            ["to-string", ["get", "name"]]
+        ],
+    "text-size": 12,
+    "text-offset": [0, 1],
+    "symbol-placement": "line", 
+    "symbol-spacing": 5000,
+    "text-allow-overlap":true
+    },
+    "paint": {
+    "text-color": "#000000" ,
+    "text-halo-color":"#ffffff",
+    "text-halo-width":3
+    }
+    }
+  ],
+  "sky": {
+    "atmosphere-blend": [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      0, 1,
+      5, 1,
+      7, 0
+    ]
+  },
+  "light": {
+    "anchor": "map",
+    "position": [1.5, 270, 80]
+  },
+  "id": "ks-topo-after"
+}
