@@ -1,7 +1,7 @@
-# AAI eCharting System – Survey Charting & Management Platform
+## AAI eCharting System – Survey Charting & Management Platform
 This project is developed for the Airport Authority of India (AAI) to manage and generate aeronautical survey charts in a more automated and scalable way. The system focuses on digitizing the entire charting process using spatial data from field surveys, integrating technologies like PostgreSQL with PostGIS, QGIS, SvelteKit, and Node.js.
  
-# Objective
+## Objective
 The main goal of this system is to provide a platform where survey data collected from various airports can be:
 
 Organized and stored spatially,
